@@ -1,4 +1,4 @@
-package com.tech.ps.products.config;
+package com.tech.ps.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,14 +10,11 @@ import org.springframework.kafka.core.ProducerFactory;
 
 @Configuration
 public class KafkaConfig {
-	
-	//products.commands.topic.name=products-commands
-	//products.events.topic.name=products-events
 
-    @Value("${products.events.topic.name}")
-    private String productsEventsTopicName;
-    private final static Integer TOPIC_REPLICATION_FACTOR=3;
-    private final static Integer TOPIC_PARTITIONS=3;
+    @Value("${shipments.created.events.topic.name}")
+    private String shipmentCreatedEventsTopicName;
+    private final static Integer TOPIC_REPLICATION_FACTOR=1;
+    private final static Integer TOPIC_PARTITIONS=1;
 
     @Bean
     KafkaTemplate<String, Object> kafkaTemplate(ProducerFactory<String, Object> producerFactory) {
@@ -26,7 +23,7 @@ public class KafkaConfig {
 
     @Bean
     NewTopic createProductsEventsTopic() {
-        return TopicBuilder.name(productsEventsTopicName)
+        return TopicBuilder.name(shipmentCreatedEventsTopicName)
                 .partitions(TOPIC_PARTITIONS)
                 .replicas(TOPIC_REPLICATION_FACTOR)
                 .build();

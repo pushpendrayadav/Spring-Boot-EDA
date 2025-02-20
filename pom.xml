@@ -1,81 +1,77 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.tech.ps</groupId>
-	<artifactId>SprinBoot-EDA</artifactId>
-	<packaging>pom</packaging>
-	<name>Event Driven Microservice Communication Using Saga Orchestration Pattern-POC</name>
-	<description>Event Driven Microservice Communication Using Saga Orchestration Pattern-POC</description>
-	<version>${revision}</version>
-
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.5</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
-
-	<modules>
-		<module>orders-service</module>
-		<module>inventory-service</module>
-		<module>payments-service</module>
-		<module>credit-card-processor-service</module>
-	</modules>
-
-	<properties>
-		<core.version>1.0.0</core.version>
-		<revision>1.0.0</revision>
-		<java.version>23</java.version>
-	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-				<version>3.2.5</version>
-			</dependency>
-			<dependency>
-				<groupId>org.testcontainers</groupId>
-				<artifactId>junit-jupiter</artifactId>
-				<version>${testcontainers.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.tech.ps</groupId>
-				<artifactId>common-libs</artifactId>
-				<version>${core.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>flatten-maven-plugin</artifactId>
-				<version>1.6.0</version>  <!-- Add this line -->
-				<configuration>
-					<updatePomFile>true</updatePomFile>
-					<flattenMode>resolveCiFriendliesOnly</flattenMode>
-				</configuration>
-				<executions>
-					<execution>
-						<id>flatten</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>flatten</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>flatten.clean</id>
-						<phase>clean</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.tech.ps</groupId>
+  <artifactId>SprinBoot-EDA</artifactId>
+  <packaging>pom</packaging>
+  <name>Event Driven Microservice Communication Using Saga Orchestration Pattern-POC</name>
+  <description>Event Driven Microservice Communication Using Saga Orchestration Pattern-POC</description>
+  <version>${revision}</version>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.4.2</version>
+    <relativePath/>
+    <!-- lookup parent from repository -->
+  </parent>
+  <modules>
+    <module>orders-service</module>
+    <module>inventory-service</module>
+    <module>payments-service</module>
+    <module>credit-card-processor-service</module>
+    <module>shipment-service</module>
+  </modules>
+  <properties>
+    <core.version>1.0.0</core.version>
+    <revision>1.0.0</revision>
+    <java.version>17</java.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>3.4.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.testcontainers</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${testcontainers.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.tech.ps</groupId>
+        <artifactId>common-libs</artifactId>
+        <version>${core.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <!-- Add this line -->
+        <configuration>
+          <updatePomFile>true</updatePomFile>
+          <flattenMode>resolveCiFriendliesOnly</flattenMode>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

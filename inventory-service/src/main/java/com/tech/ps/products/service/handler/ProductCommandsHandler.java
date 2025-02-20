@@ -18,6 +18,9 @@ import com.tech.ps.products.service.ProductService;
 @Component
 @KafkaListener(topics="${products.commands.topic.name}")
 public class ProductCommandsHandler {
+	
+	//products.commands.topic.name=products-commands
+    //products.events.topic.name=products-events
 
     private final ProductService productService;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
